@@ -70,13 +70,21 @@ section + section { border-top: 1px solid var(--rule); }
 .stop .phone { max-width: 220px; border-width: 5px; border-radius: 22px; box-shadow: none; }
 .stop .text { display: grid; gap: 12px; max-width: 52ch; }
 .stop .text ul { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; }
-/* The looks: three phones, fanned. */
-.stop.looks { grid-template-columns: 340px minmax(0, 1fr); }
-.trio { position: relative; height: 380px; width: 100%; max-width: 340px; }
-.trio .phone { position: absolute; bottom: 0; width: 150px; max-width: none; border-width: 4px; border-radius: 18px; box-shadow: 0 14px 30px -18px rgba(18, 22, 15, 0.6); }
-.trio .phone:nth-child(1) { left: 0; transform: rotate(-6deg); transform-origin: bottom center; }
-.trio .phone:nth-child(2) { left: 50%; bottom: 18px; translate: -50% 0; z-index: 2; }
-.trio .phone:nth-child(3) { right: 0; transform: rotate(6deg); transform-origin: bottom center; }
+/* Your look: every look in a row that pans, like the app's own picker. */
+.looks-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; }
+.pan { display: flex; gap: 10px; flex: none; }
+.pan button { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--rule); background: var(--panel); color: var(--ink); display: grid; place-items: center; cursor: pointer; padding: 0; }
+.pan button:hover:not(:disabled) { border-color: var(--soft); }
+.pan button:disabled { opacity: 0.35; cursor: default; }
+.pan svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.rail { margin-top: 36px; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: thin; padding-bottom: 14px; border-radius: 4px; }
+.rail:focus-visible { outline: 2px solid var(--sage-ink); outline-offset: 4px; }
+.rail ul { list-style: none; margin: 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: 184px; gap: 20px; }
+.rail li { scroll-snap-align: start; }
+.rail figure { margin: 0; display: grid; gap: 12px; }
+.rail .phone { max-width: none; border-width: 4px; border-radius: 18px; box-shadow: none; }
+.rail figcaption { display: grid; gap: 2px; font-size: 15px; line-height: 1.4; }
+.rail figcaption span { color: var(--soft); font-size: 14px; }
 
 /* What stays: a sage band. */
 .keep { background: var(--sage); color: var(--on-sage); }
@@ -119,13 +127,12 @@ tr:last-child td { border-bottom: 0; }
   .hero .phone { max-width: 240px; }
   .stop { grid-template-columns: 140px minmax(0, 1fr); gap: 22px; align-items: start; }
   .stop .phone { max-width: 140px; border-width: 4px; border-radius: 16px; }
-  .stop.looks { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 560px) {
   section { padding-block: 52px; }
   .keep ul { grid-template-columns: minmax(0, 1fr); }
-  .trio { height: 330px; max-width: 300px; }
-  .trio .phone { width: 130px; }
+  .pan { display: none; }
+  .rail ul { grid-auto-columns: 150px; gap: 14px; }
   .stop { grid-template-columns: minmax(0, 1fr); }
   .stop .phone { max-width: 200px; border-radius: 20px; justify-self: start; }
 }
