@@ -80,11 +80,6 @@ section + section { border-top: 1px solid var(--rule); }
 .keep li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px; }
 .keep li .slash { color: var(--sage-ink); font-weight: 300; }
 
-/* Going further: one panel of what the computer setup adds. */
-.panel { margin-top: 32px; padding: 22px 24px; border-radius: 14px; background: var(--panel); display: grid; gap: 12px; max-width: 760px; }
-.panel ul { margin: 0; padding-left: 1.1em; display: grid; gap: 8px; }
-.panel .mono { color: var(--soft); }
-
 /* Trying it early, and questions. */
 .early { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: start; }
 .address { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 8px; }
